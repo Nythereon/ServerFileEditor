@@ -1,3 +1,8 @@
 .env
 .idea/
 __pycache__/
+.DS_Store
+ServerDileEditor.spec
+build/
+dist/
+ServerFileEditor.spec

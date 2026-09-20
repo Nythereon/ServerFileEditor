@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 from tkinter import Listbox, END, Scrollbar, messagebox, simpledialog, Toplevel, Label, Button
 
@@ -6,11 +7,18 @@ import paramiko
 from typing import TYPE_CHECKING
 from dotenv import load_dotenv
 
-load_dotenv()
+
+if getattr(sys, 'frozen', False):
+    bundle_dir = sys._MEIPASS
+else:
+    bundle_dir = os.path.dirname(os.path.abspath(__file__))
+
+env_path = os.path.join(bundle_dir, '.env')
+load_dotenv(dotenv_path=env_path)
+
 UNRAID_ADDRESS = os.environ.get("UNRAID_ADDRESS")
 
 
-# 1. This block ONLY runs inside PyCharm for your auto-complete dropdown
 if TYPE_CHECKING:
     from main import ServerEditorApp, UNRAID_ADDRESS
 
